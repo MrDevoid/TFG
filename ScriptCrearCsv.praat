@@ -67,7 +67,7 @@ endfor
 endproc
 
 deleteFile: nameOfResultFile$
-appendFileLine:nameOfResultFile$,"meanPitch,minPitch,maxPitch,stdPitch,meanHarmonicity,minHarmonicity,maxHarmonicity,stdHarmonicity,minIntensity,maxIntensity,quantileIntensity,meanIntensity,stdIntensity,minFormant1, maxFormant1, quantileFormant1, meanFormant1, stdFormant1, minFormant2, maxFormant2, quantileFormant2, meanFormant2, stdFormant2, minFormant3, maxFormant3, quantileFormant3, meanFormant3, stdFormant3, Result"
+appendFileLine:nameOfResultFile$,"meanPitch,minPitch,maxPitch,stdPitch,meanHarmonicity,minHarmonicity,maxHarmonicity,stdHarmonicity,minIntensity,maxIntensity,quantileIntensity,meanIntensity,stdIntensity,minFormant1,maxFormant1,quantileFormant1,meanFormant1,stdFormant1,minFormant2,maxFormant2,quantileFormant2,meanFormant2,stdFormant2,minFormant3,maxFormant3,quantileFormant3,meanFormant3,stdFormant3,Result"
 @extraerAudios: "Neutral/AudioNeutral", numberSongsNeutral
 @extraerAudios: "Alegria/AudioAlegria", numberSongsAlegria
 @extraerAudios: "Tristeza/AudioTristeza", numberSongsTristeza

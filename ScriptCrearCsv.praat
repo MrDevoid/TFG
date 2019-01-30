@@ -6,19 +6,22 @@ form Filename and number of songs
 	natural numberSongsMiedo 2
 	natural numberSongsAsco 2
 	natural numberSongsIra 2
+	natural numberSongsNeutral 2
 endform
 
 procedure extraerAudios: nameOfPath$, numberSongs
-if nameOfPath$ = "Alegria/AudioAlegria"
-	etiqueta = 0
-elsif nameOfPath$ = "Tristeza/AudioTristeza"
+if nameOfPath$ = "Neutral/AudioNeutral"
 	etiqueta = 1
-elsif nameOfPath$ = "Miedo/AudioMiedo"
+elsif nameOfPath$ = "Alegria/AudioAlegria"
+	etiqueta = 1
+elsif nameOfPath$ = "Tristeza/AudioTristeza"
 	etiqueta = 2
-elsif nameOfPath$ = "Asco/AudioAsco"
+elsif nameOfPath$ = "Miedo/AudioMiedo"
 	etiqueta = 3
-elsif nameOfPath$ = "Ira/AudioIra"
+elsif nameOfPath$ = "Asco/AudioAsco"
 	etiqueta = 4
+elsif nameOfPath$ = "Ira/AudioIra"
+	etiqueta = 5
 endif
 for i from 1 to numberSongs
 	name$= audiosPath$+ nameOfPath$ + string$(i) + ".wav"
@@ -65,6 +68,7 @@ endproc
 
 deleteFile: nameOfResultFile$
 appendFileLine:nameOfResultFile$,"meanPitch,minPitch,maxPitch,stdPitch,meanHarmonicity,minHarmonicity,maxHarmonicity,stdHarmonicity,minIntensity,maxIntensity,quantileIntensity,meanIntensity,stdIntensity,minFormant1, maxFormant1, quantileFormant1, meanFormant1, stdFormant1, minFormant2, maxFormant2, quantileFormant2, meanFormant2, stdFormant2, minFormant3, maxFormant3, quantileFormant3, meanFormant3, stdFormant3, Result"
+@extraerAudios: "Neutral/AudioNeutral", numberSongsNeutral
 @extraerAudios: "Alegria/AudioAlegria", numberSongsAlegria
 @extraerAudios: "Tristeza/AudioTristeza", numberSongsTristeza
 @extraerAudios: "Miedo/AudioMiedo", numberSongsMiedo

@@ -1,5 +1,5 @@
 form Filename and number of songs
-	sentence nameOfResultFile sonidos.csv
+	sentence nameOfResultFile sonidosNuevos.csv
 	sentence audiosPath ./Audios
 	natural numberSongsAlegria 2
 	natural numberSongsTristeza 2
@@ -10,17 +10,17 @@ form Filename and number of songs
 endform
 
 procedure extraerAudios: nameOfPath$, numberSongs
-if nameOfPath$ = "Neutral/AudioNeutral"
-	etiqueta = 1
-elsif nameOfPath$ = "Alegria/AudioAlegria"
-	etiqueta = 1
+if nameOfPath$ = "Alegria/AudioAlegria"
+	etiqueta = 0
 elsif nameOfPath$ = "Tristeza/AudioTristeza"
-	etiqueta = 2
+	etiqueta = 1
 elsif nameOfPath$ = "Miedo/AudioMiedo"
-	etiqueta = 3
+	etiqueta = 2
 elsif nameOfPath$ = "Asco/AudioAsco"
-	etiqueta = 4
+	etiqueta = 3
 elsif nameOfPath$ = "Ira/AudioIra"
+	etiqueta = 4
+elsif nameOfPath$ = "Neutral/AudioNeutral"
 	etiqueta = 5
 endif
 for i from 1 to numberSongs

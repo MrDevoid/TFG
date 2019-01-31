@@ -1,12 +1,12 @@
 form Filename and number of songs
 	sentence nameOfResultFile sonidosNuevos.csv
-	sentence audiosPath ./Audios
-	natural numberSongsAlegria 2
-	natural numberSongsTristeza 2
-	natural numberSongsMiedo 2
-	natural numberSongsAsco 2
-	natural numberSongsIra 2
-	natural numberSongsNeutral 2
+	sentence audiosPath ./
+	integer numberSongsAlegria 1
+	integer numberSongsTristeza 0
+	integer numberSongsMiedo 0
+	integer numberSongsAsco 0
+	integer numberSongsIra 0
+	integer numberSongsNeutral 0
 endform
 
 procedure extraerAudios: nameOfPath$, numberSongs
@@ -23,8 +23,8 @@ elsif nameOfPath$ = "Ira/AudioIra"
 elsif nameOfPath$ = "Neutral/AudioNeutral"
 	etiqueta = 5
 endif
-for i from 1 to numberSongs
-	name$= audiosPath$+ nameOfPath$ + string$(i) + ".wav"
+for counter from 1 to numberSongs
+	name$= audiosPath$+ nameOfPath$ + string$(counter) + ".wav"
 	sound=Read from file: (name$)
 	To Pitch: 0.0, 75.0, 600.0
 	meanPitch = Get mean: 0.0, 0.0, "Hertz"
@@ -44,6 +44,8 @@ for i from 1 to numberSongs
 	quantileIntensity = Get quantile: 0.0, 0.0, 0.5
 	meanIntensity = Get mean: 0.0, 0.0, "dB"
 	stdIntensity = Get standard deviation: 0.0, 0.0
+	select sound
+include CalculoSpeechRate.praat
 	select sound	
 	To Formant (burg): 0.0, 5.0, 5500.0, 0.025, 50.0
 	minFormant1 = Get minimum: 1, 0.0, 0.0, "hertz", "Parabolic"
@@ -62,12 +64,12 @@ for i from 1 to numberSongs
 	meanFormant3 = Get mean: 3, 0.0, 0.0, "hertz"
 	stdFormant3 = Get standard deviation: 3, 0.0, 0.0, "hertz"
 
-appendFileLine:nameOfResultFile$,meanPitch,",",minPitch,",",maxPitch,",",stdPitch,",",meanHarmonicity,",",minHarmonicity,",",maxHarmonicity,",",stdHarmonicity,",",minIntensity,",",maxIntensity,",",quantileIntensity,",",meanIntensity,",",stdIntensity,",",minFormant1,",", maxFormant1,",",quantileFormant1,",",meanFormant1,",",stdFormant1,",",minFormant2,",",maxFormant2,",",quantileFormant2,",",meanFormant2,",",stdFormant2,",",minFormant3,",",maxFormant3,",",quantileFormant3,",",meanFormant3,",",stdFormant3,",",etiqueta
+appendFileLine:nameOfResultFile$,meanPitch,",",minPitch,",",maxPitch,",",stdPitch,",",meanHarmonicity,",",minHarmonicity,",",maxHarmonicity,",",stdHarmonicity,",",minIntensity,",",maxIntensity,",",quantileIntensity,",",meanIntensity,",",stdIntensity,",",speakingrate,",",articulationrate,",",minFormant1,",", maxFormant1,",",quantileFormant1,",",meanFormant1,",",stdFormant1,",",minFormant2,",",maxFormant2,",",quantileFormant2,",",meanFormant2,",",stdFormant2,",",minFormant3,",",maxFormant3,",",quantileFormant3,",",meanFormant3,",",stdFormant3,",",etiqueta
 endfor
 endproc
 
 deleteFile: nameOfResultFile$
-appendFileLine:nameOfResultFile$,"meanPitch,minPitch,maxPitch,stdPitch,meanHarmonicity,minHarmonicity,maxHarmonicity,stdHarmonicity,minIntensity,maxIntensity,quantileIntensity,meanIntensity,stdIntensity,minFormant1,maxFormant1,quantileFormant1,meanFormant1,stdFormant1,minFormant2,maxFormant2,quantileFormant2,meanFormant2,stdFormant2,minFormant3,maxFormant3,quantileFormant3,meanFormant3,stdFormant3,Result"
+appendFileLine:nameOfResultFile$,"meanPitch,minPitch,maxPitch,stdPitch,meanHarmonicity,minHarmonicity,maxHarmonicity,stdHarmonicity,minIntensity,maxIntensity,quantileIntensity,meanIntensity,stdIntensity,speakingRate,articulationRate,minFormant1,maxFormant1,quantileFormant1,meanFormant1,stdFormant1,minFormant2,maxFormant2,quantileFormant2,meanFormant2,stdFormant2,minFormant3,maxFormant3,quantileFormant3,meanFormant3,stdFormant3,Result"
 @extraerAudios: "Neutral/AudioNeutral", numberSongsNeutral
 @extraerAudios: "Alegria/AudioAlegria", numberSongsAlegria
 @extraerAudios: "Tristeza/AudioTristeza", numberSongsTristeza

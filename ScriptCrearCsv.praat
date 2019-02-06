@@ -27,12 +27,12 @@ for counter from 1 to numberSongs
 	name$= audiosPath$+ nameOfPath$ + string$(counter) + ".wav"
 	sound=Read from file: (name$)
 include ObtenerVariables.praat
-appendFileLine:nameOfResultFile$,meanPitch,",",minPitch,",",maxPitch,",",stdPitch,",",meanHarmonicity,",",minHarmonicity,",",maxHarmonicity,",",stdHarmonicity,",",minIntensity,",",maxIntensity,",",quantileIntensity,",",meanIntensity,",",stdIntensity,",",speakingrate,",",articulationrate,",",minFormant1,",", maxFormant1,",",quantileFormant1,",",meanFormant1,",",stdFormant1,",",minFormant2,",",maxFormant2,",",quantileFormant2,",",meanFormant2,",",stdFormant2,",",minFormant3,",",maxFormant3,",",quantileFormant3,",",meanFormant3,",",stdFormant3,",",etiqueta
+appendFileLine:nameOfResultFile$,meanAmplitude,minAmplitude,maxAmplitude,stdAmplitude,energy,power,meanPitch,",",minPitch,",",maxPitch,",",stdPitch,",",meanHarmonicity,",",minHarmonicity,",",maxHarmonicity,",",stdHarmonicity,",",minIntensity,",",maxIntensity,",",quantileIntensity,",",meanIntensity,",",stdIntensity,",",speakingrate,",",articulationrate,",",minFormant1,",", maxFormant1,",",quantileFormant1,",",meanFormant1,",",stdFormant1,",",minFormant2,",",maxFormant2,",",quantileFormant2,",",meanFormant2,",",stdFormant2,",",minFormant3,",",maxFormant3,",",quantileFormant3,",",meanFormant3,",",stdFormant3,",",etiqueta
 endfor
 endproc
 
 deleteFile: nameOfResultFile$
-appendFileLine:nameOfResultFile$,"meanPitch,minPitch,maxPitch,stdPitch,meanHarmonicity,minHarmonicity,maxHarmonicity,stdHarmonicity,minIntensity,maxIntensity,quantileIntensity,meanIntensity,stdIntensity,speakingRate,articulationRate,minFormant1,maxFormant1,quantileFormant1,meanFormant1,stdFormant1,minFormant2,maxFormant2,quantileFormant2,meanFormant2,stdFormant2,minFormant3,maxFormant3,quantileFormant3,meanFormant3,stdFormant3,Result"
+appendFileLine:nameOfResultFile$,"meanAmplitude,minAmplitude,maxAmplitude,stdAmplitude,energy,power,meanPitch,minPitch,maxPitch,stdPitch,meanHarmonicity,minHarmonicity,maxHarmonicity,stdHarmonicity,minIntensity,maxIntensity,quantileIntensity,meanIntensity,stdIntensity,speakingRate,articulationRate,minFormant1,maxFormant1,quantileFormant1,meanFormant1,stdFormant1,minFormant2,maxFormant2,quantileFormant2,meanFormant2,stdFormant2,minFormant3,maxFormant3,quantileFormant3,meanFormant3,stdFormant3,Result"
 @extraerAudios: "Neutral/AudioNeutral", numberSongsNeutral
 @extraerAudios: "Alegria/AudioAlegria", numberSongsAlegria
 @extraerAudios: "Tristeza/AudioTristeza", numberSongsTristeza

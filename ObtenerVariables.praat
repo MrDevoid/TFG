@@ -1,3 +1,10 @@
+meanAmplitude = Get mean: 0, 0.0, 0.0
+minAmplitude = Get minimum: 0.0, 0.0, "Sinc70"
+maxAmplitude = Get maximum: 0.0, 0.0, "Sinc70"
+stdAmplitude = Get standard deviation: 0, 0.0, 0.0
+energy = Get energy: 0.0, 0.0
+power = Get power: 0.0, 0.0
+select sound
 To Pitch: 0.0, 75.0, 600.0
 meanPitch = Get mean: 0.0, 0.0, "Hertz"
 minPitch = Get minimum: 0.0, 0.0, "Hertz", "Parabolic"
